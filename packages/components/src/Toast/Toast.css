@@ -1,0 +1,125 @@
+.toast-container {
+  position: fixed;
+  z-index: var(--z-index-tooltip);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2-5);
+  padding: var(--spacing-4);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.toast-container--top-right {
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+}
+
+.toast-container--top-left {
+  top: 0;
+  left: 0;
+  align-items: flex-start;
+}
+
+.toast-container--bottom-right {
+  bottom: 0;
+  right: 0;
+  align-items: flex-end;
+}
+
+.toast-container--bottom-left {
+  bottom: 0;
+  left: 0;
+  align-items: flex-start;
+}
+
+.toast-container--top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.toast-container--bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.toast {
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all var(--transition-duration-normal) var(--transition-timing-function);
+  pointer-events: all;
+}
+
+.toast__alert {
+  width: 100%;
+  box-shadow: var(--shadow-md);
+}
+
+/* Animation based on position */
+.toast--top-right,
+.toast--top-left,
+.toast--top {
+  transform-origin: top center;
+}
+
+.toast--bottom-right,
+.toast--bottom-left,
+.toast--bottom {
+  transform-origin: bottom center;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.toast--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast--top-right.toast--hidden,
+.toast--top-left.toast--hidden,
+.toast--top.toast--hidden {
+  transform: translateY(-20px) scale(0.95);
+}
+
+.toast--bottom-right.toast--hidden,
+.toast--bottom-left.toast--hidden,
+.toast--bottom.toast--hidden {
+  transform: translateY(20px) scale(0.95);
+}
+
+/* Add minimal responsive behavior */
+@media (max-width: 480px) {
+  .toast {
+    max-width: 100%;
+  }
+  
+  .toast-container {
+    width: 100%;
+  }
+  
+  .toast-container--top-left,
+  .toast-container--top-right,
+  .toast-container--top {
+    top: 0;
+    right: 0;
+    left: 0;
+    align-items: stretch;
+  }
+  
+  .toast-container--bottom-left,
+  .toast-container--bottom-right,
+  .toast-container--bottom {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: stretch;
+  }
+}

@@ -1,0 +1,248 @@
+.radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  margin: var(--spacing-1) 0;
+}
+
+.radio__label-container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.radio--right .radio__label-container {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.radio__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.radio__control {
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--radio-color, #4f46e5);
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio__input:focus-visible + .radio__control {
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
+}
+
+.radio__input:checked + .radio__control::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: var(--radio-color, #4f46e5);
+}
+
+.radio__label {
+  position: relative;
+  padding-left: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  user-select: none;
+  color: var(--color-neutral-900);
+}
+
+.radio__label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--color-neutral-400);
+  background-color: transparent;
+  transition: border-color var(--transition-duration-fast),
+              background-color var(--transition-duration-fast);
+}
+
+.radio__input:checked + .radio__label::before {
+  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-500);
+}
+
+/* 체크 표시(원 내부 도트) */
+.radio__label::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-neutral-50);
+  transition: transform var(--transition-duration-fast);
+}
+
+.radio__input:checked + .radio__label::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* 상태 */
+.radio__input:focus-visible + .radio__label::before {
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+.radio__input:disabled + .radio__label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.radio__input:disabled + .radio__label::before {
+  background-color: var(--color-neutral-200);
+  border-color: var(--color-neutral-300);
+}
+
+/* 설명 텍스트 */
+.radio__description {
+  display: block;
+  margin-top: var(--spacing-1);
+  margin-left: var(--spacing-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+/* 카드 스타일 라디오 */
+.radio--card {
+  margin: var(--spacing-2) 0;
+}
+
+.radio--card .radio__label {
+  border: 1px solid var(--color-neutral-200);
+  padding: var(--spacing-3) var(--spacing-4) var(--spacing-3) var(--spacing-10);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-duration-fast),
+              background-color var(--transition-duration-fast);
+  width: 100%;
+}
+
+.radio--card .radio__label::before {
+  left: var(--spacing-3);
+}
+
+.radio--card .radio__label::after {
+  left: calc(var(--spacing-3) + 6px);
+}
+
+.radio--card .radio__input:checked + .radio__label {
+  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-50);
+}
+
+.radio--card .radio__description {
+  margin-left: 0;
+  margin-top: var(--spacing-2);
+}
+
+/* 크기 변형 */
+.radio--sm .radio__control {
+  width: 14px;
+  height: 14px;
+}
+
+.radio--sm .radio__label {
+  font-size: 0.875rem;
+}
+
+.radio--md .radio__control {
+  width: 16px;
+  height: 16px;
+}
+
+.radio--md .radio__label {
+  font-size: 1rem;
+}
+
+.radio--lg .radio__control {
+  width: 20px;
+  height: 20px;
+}
+
+.radio--lg .radio__label {
+  font-size: 1.125rem;
+}
+
+/* 상태 스타일 */
+.radio--disabled {
+  opacity: 0.6;
+}
+
+.radio--disabled .radio__label-container {
+  cursor: not-allowed;
+}
+
+.radio__help-text {
+  font-size: 0.875rem;
+  color: var(--text-muted, #6b7280);
+  margin-top: 2px;
+}
+
+.radio__help-text--error,
+.radio-group__help-text--error {
+  color: var(--error-color, #ef4444);
+}
+
+/* Radio Group 스타일 */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-group__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  padding: 0;
+}
+
+.radio-group__required {
+  color: var(--error-color, #ef4444);
+  margin-left: 2px;
+}
+
+.radio-group__items {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-group--vertical .radio-group__items {
+  flex-direction: column;
+}
+
+.radio-group--horizontal .radio-group__items {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.radio-group__help-text {
+  font-size: 0.875rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}

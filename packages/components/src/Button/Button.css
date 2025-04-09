@@ -1,0 +1,127 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-duration-fast) var(--transition-timing-function);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+/* 크기 변형 */
+.button--sm {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-1) var(--spacing-3);
+  min-height: 2rem;
+}
+
+.button--md {
+  font-size: var(--font-size-md);
+  padding: var(--spacing-2) var(--spacing-4);
+  min-height: 2.5rem;
+}
+
+.button--lg {
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-2-5) var(--spacing-5);
+  min-height: 3rem;
+}
+
+/* 스타일 변형 */
+.button--primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-neutral-50);
+}
+
+.button--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-600);
+}
+
+.button--primary:active:not(:disabled) {
+  background-color: var(--color-primary-700);
+}
+
+.button--secondary {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-900);
+}
+
+.button--secondary:hover:not(:disabled) {
+  background-color: var(--color-neutral-300);
+}
+
+.button--secondary:active:not(:disabled) {
+  background-color: var(--color-neutral-400);
+}
+
+.button--tertiary {
+  background-color: transparent;
+  color: var(--color-primary-500);
+  border: 1px solid var(--color-primary-500);
+}
+
+.button--tertiary:hover:not(:disabled) {
+  background-color: var(--color-primary-50);
+}
+
+.button--tertiary:active:not(:disabled) {
+  background-color: var(--color-primary-100);
+}
+
+.button--danger {
+  background-color: var(--color-error-500);
+  color: var(--color-neutral-50);
+}
+
+.button--danger:hover:not(:disabled) {
+  background-color: var(--color-error-600);
+}
+
+.button--danger:active:not(:disabled) {
+  background-color: var(--color-error-700);
+}
+
+/* 상태 변형 */
+.button:disabled, .button--loading {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button--full-width {
+  width: 100%;
+}
+
+.button:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* 로딩 스피너 */
+.button__spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: button-spin var(--transition-duration-normal) linear infinite;
+}
+
+@keyframes button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 아이콘 */
+.button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
