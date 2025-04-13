@@ -1,0 +1,164 @@
+.popover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.popover {
+  position: absolute;
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-2);
+  z-index: var(--z-index-popover);
+  min-width: 200px; /* 최소 너비 설정 */
+  width: max-content; /* 내용에 따라 자동 확장 */
+  max-width: 320px; /* 최대 너비 제한 */
+  color: var(--color-neutral-900);
+  text-align: left;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+.popover--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  animation: fadeInTop 0.2s ease-in-out;
+}
+
+.popover--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  animation: fadeInBottom 0.2s ease-in-out;
+}
+
+.popover--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+  animation: fadeInLeft 0.2s ease-in-out;
+}
+
+.popover--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+  animation: fadeInRight 0.2s ease-in-out;
+}
+
+.popover::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.popover--top::before {
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0;
+  border-color: white transparent transparent;
+}
+
+.popover--bottom::before {
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 8px 8px;
+  border-color: transparent transparent white;
+}
+
+.popover--left::before {
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent white;
+}
+
+.popover--right::before {
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 8px 8px 8px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Popover 내부 콘텐츠 스타일링 */
+.popover-content {
+  width: 100%;
+}
+
+.popover-content h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.popover-content p {
+  margin-bottom: var(--spacing-3);
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 다크모드 지원 */
+[data-theme="dark"] .popover {
+  background-color: var(--color-neutral-100); /* 다크모드에서 배경색 */
+  color: var(--color-neutral-900); /* 다크모드에서 텍스트 색상 */
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .popover--top::before {
+  border-color: var(--color-neutral-100) transparent transparent;
+}
+
+[data-theme="dark"] .popover--bottom::before {
+  border-color: transparent transparent var(--color-neutral-100);
+}
+
+[data-theme="dark"] .popover--left::before {
+  border-color: transparent transparent transparent var(--color-neutral-100);
+}
+
+[data-theme="dark"] .popover--right::before {
+  border-color: transparent var(--color-neutral-100) transparent transparent;
+}

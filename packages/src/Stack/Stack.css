@@ -1,0 +1,51 @@
+.stack {
+  display: flex;
+}
+
+.stack--vertical {
+  flex-direction: column;
+}
+
+.stack--horizontal {
+  flex-direction: row;
+}
+
+.stack--full-width {
+  width: 100%;
+}
+
+.stack--full-height {
+  height: 100%;
+}
+
+/* 구분선 스타일 */
+.stack--divider {
+  gap: 0;
+}
+
+.stack__divider {
+  flex-shrink: 0;
+}
+
+.stack__divider--vertical {
+  width: 100%;
+  height: var(--spacing-2);
+}
+
+.stack__divider--horizontal {
+  height: auto;
+  width: var(--spacing-2);
+  align-self: stretch;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+  .stack--responsive {
+    flex-direction: column;
+  }
+
+  .stack--responsive .stack__divider--horizontal {
+    width: 100%;
+    height: var(--spacing-2);
+  }
+}

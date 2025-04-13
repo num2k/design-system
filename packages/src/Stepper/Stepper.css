@@ -1,0 +1,162 @@
+.stepper {
+  display: flex;
+  width: 100%;
+}
+
+.stepper--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.stepper--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stepper__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+}
+
+.stepper--vertical .stepper__step {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-6);
+  width: 100%;
+}
+
+.stepper--alternative-label .stepper__step {
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+}
+
+/* 스텝 상태 스타일 */
+.stepper__step--active .step__title {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-600);
+}
+
+.stepper__step--completed .step__title {
+  color: var(--color-success-600);
+}
+
+.stepper__step--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 아이콘 컨테이너 */
+.stepper__step-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.stepper--vertical .stepper__step-icon-container {
+  margin-right: var(--spacing-4);
+}
+
+/* 스텝 아이콘 */
+.step__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-duration-normal);
+}
+
+.step__icon--active {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+
+.step__icon--completed {
+  background-color: var(--color-success-500);
+  color: white;
+}
+
+.step__icon--disabled {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-400);
+}
+
+/* 스텝 내용 */
+.stepper__content {
+  margin-top: var(--spacing-3);
+  text-align: center;
+  width: 100%;
+}
+
+.stepper--vertical .stepper__content {
+  margin-top: 0;
+  text-align: left;
+}
+
+.step__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-800);
+  margin-bottom: var(--spacing-1);
+}
+
+.step__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+/* 연결선 */
+.stepper__connector {
+  position: absolute;
+  background-color: var(--color-neutral-200);
+  transition: background-color var(--transition-duration-normal);
+}
+
+.stepper__connector--completed {
+  background-color: var(--color-success-500);
+}
+
+.stepper--horizontal .stepper__connector {
+  top: 16px; /* 아이콘 중앙 */
+  left: calc(50% + 16px); /* 아이콘 중앙에서 오른쪽으로 */
+  right: calc(-50% + 16px); /* 다음 아이콘 중앙까지 */
+  height: 2px;
+}
+
+.stepper--vertical .stepper__connector {
+  top: 32px; /* 아이콘 아래 */
+  left: 16px; /* 아이콘 중앙 */
+  height: calc(100% - 32px); /* 다음 아이콘까지의 높이 */
+  width: 2px;
+}
+
+/* 변형 스타일 */
+.stepper--outlined .step__icon {
+  background-color: transparent;
+  border: 2px solid var(--color-neutral-300);
+}
+
+.stepper--outlined .step__icon--active {
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-500);
+}
+
+.stepper--outlined .step__icon--completed {
+  border-color: var(--color-success-500);
+  color: var(--color-success-500);
+}
+
+.stepper--contained .step__icon {
+  box-shadow: var(--shadow-sm);
+}

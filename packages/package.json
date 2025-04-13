@@ -1,0 +1,61 @@
+{
+  "name": "@num2k/design-system",
+  "version": "2.0.9",
+  "description": "React 19 통합 디자인 시스템 - 컴포넌트 및 디자인 토큰",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/styles.css",
+  "sideEffects": true,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup -c && npm run copy-styles",
+    "copy-styles": "cp src/styles.css dist/ || copy src\\styles.css dist\\",
+    "dev": "rollup -c -w",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "ui",
+    "design-system",
+    "tokens",
+    "css-variables"
+  ],
+  "author": "num2k",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@types/styled-components": "^5.1.34",
+    "styled-components": "^6.1.17"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "postcss": "^8.5.3",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.40.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  }
+}

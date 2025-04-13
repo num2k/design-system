@@ -1,0 +1,261 @@
+.radio {
+  position: relative;
+  margin-bottom: var(--spacing-2);
+}
+
+.radio__label-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 라디오 버튼 오른쪽 배치 */
+.radio--right .radio__label-container {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+/* 네이티브 라디오 숨기기 */
+.radio__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+/* 커스텀 라디오 버튼 수정 - 완벽한 중앙 정렬을 위한 속성 추가 */
+.radio__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-neutral-300);
+  background-color: transparent;
+  transition: all var(--transition-duration-fast);
+  position: relative; /* 위치 기준점 추가 */
+  box-sizing: border-box; /* 박스 크기 계산 방식 조정 */
+}
+
+/* 체크 표시 수정 - 절대적인 px 단위 사용 */
+.radio__control::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: var(--color-primary-500);
+  transition: all var(--transition-duration-fast);
+}
+
+/* 체크된 상태 */
+.radio__input:checked + .radio__control {
+  border-color: var(--color-primary-500);
+}
+
+/* 작은 사이즈 - 16px 라디오 버튼 */
+.radio--sm .radio__control {
+  width: 16px;
+  height: 16px;
+}
+
+.radio--sm .radio__input:checked + .radio__control::after {
+  width: 8px; /* 정확히 50% */
+  height: 8px; /* 정확히 50% */
+}
+
+/* 중간 사이즈 - 20px 라디오 버튼 */
+.radio--md .radio__control {
+  width: 20px;
+  height: 20px;
+}
+
+.radio--md .radio__input:checked + .radio__control::after {
+  width: 10px; /* 정확히 50% */
+  height: 10px; /* 정확히 50% */
+}
+
+/* 큰 사이즈 - 24px 라디오 버튼 */
+.radio--lg .radio__control {
+  width: 24px;
+  height: 24px;
+}
+
+.radio--lg .radio__input:checked + .radio__control::after {
+  width: 12px; /* 정확히 50% */
+  height: 12px; /* 정확히 50% */
+}
+
+/* 라벨 스타일 */
+.radio__label {
+  font-family: var(--font-family-sans);
+  margin-left: var(--spacing-2);
+  line-height: 1.4;
+}
+
+.radio--right .radio__label {
+  margin-left: 0;
+  margin-right: var(--spacing-2);
+}
+
+.radio--sm .radio__label {
+  font-size: var(--font-size-sm);
+}
+
+.radio--md .radio__label {
+  font-size: var(--font-size-md);
+}
+
+.radio--lg .radio__label {
+  font-size: var(--font-size-lg);
+}
+
+/* 상태 스타일 */
+.radio--disabled {
+  opacity: 0.6;
+}
+
+.radio--disabled .radio__label-container {
+  cursor: not-allowed;
+}
+
+.radio--disabled .radio__control {
+  border-color: var(--color-neutral-300);
+  background-color: var(--color-neutral-100);
+}
+
+.radio--disabled .radio__input:checked + .radio__control::after {
+  background-color: var(--color-neutral-400);
+}
+
+/* 에러 상태 */
+.radio--error .radio__control {
+  border-color: var(--color-error-500);
+}
+
+.radio--error .radio__input:checked + .radio__control {
+  border-color: var(--color-error-500);
+}
+
+.radio--error .radio__input:checked + .radio__control::after {
+  background-color: var(--color-error-500);
+}
+
+/* 포커스 상태 */
+.radio__input:focus-visible + .radio__control {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* 도움말 텍스트 */
+.radio__help-text {
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-1);
+  color: var(--color-neutral-500);
+}
+
+.radio__help-text--error {
+  color: var(--color-error-500);
+}
+
+/* 색상 변형 */
+.radio--color-primary .radio__input:checked + .radio__control {
+  border-color: var(--color-primary-500);
+}
+
+.radio--color-primary .radio__input:checked + .radio__control::after {
+  background-color: var(--color-primary-500);
+}
+
+.radio--color-error .radio__input:checked + .radio__control {
+  border-color: var(--color-error-500);
+}
+
+.radio--color-error .radio__input:checked + .radio__control::after {
+  background-color: var(--color-error-500);
+}
+
+.radio--color-success .radio__input:checked + .radio__control {
+  border-color: var(--color-success-500);
+}
+
+.radio--color-success .radio__input:checked + .radio__control::after {
+  background-color: var(--color-success-500);
+}
+
+.radio--color-warning .radio__input:checked + .radio__control {
+  border-color: var(--color-warning-500);
+}
+
+.radio--color-warning .radio__input:checked + .radio__control::after {
+  background-color: var(--color-warning-500);
+}
+
+.radio--color-info .radio__input:checked + .radio__control {
+  border-color: var(--color-info-600); /* primary와 다른 색조 사용 */
+}
+
+.radio--color-info .radio__input:checked + .radio__control::after {
+  background-color: var(--color-info-600);
+}
+
+/* 라디오 그룹 스타일 */
+.radio-group {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.radio-group__label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+}
+
+.radio-group__required {
+  color: var(--color-error-500);
+  margin-left: var(--spacing-1);
+}
+
+.radio-group__items {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.radio-group--vertical .radio-group__items {
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.radio-group--horizontal .radio-group__items {
+  flex-direction: row;
+}
+
+.radio-group__help-text {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.radio-group__help-text--error {
+  color: var(--color-error-500);
+}
+
+.radio-group--error .radio-group__label {
+  color: var(--color-error-500);
+}
+
+/* 다크 모드 지원 */
+[data-theme="dark"] .radio__control {
+  border-color: var(--color-neutral-400);
+}
+
+[data-theme="dark"] .radio--disabled .radio__control {
+  background-color: var(--color-neutral-300);
+}

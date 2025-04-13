@@ -1,0 +1,31 @@
+.theme-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.theme-switcher__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-md);
+  margin-left: var(--spacing-2);
+}
+
+/* 시스템 기본 설정에 따라 테마 전환도 가능하게 함 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-background-primary: var(--color-neutral-900);
+    --color-text-primary: var(--color-neutral-100);
+    /* 다른 다크 테마 변수들 */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-background-primary: var(--color-neutral-100);
+    --color-text-primary: var(--color-neutral-900);
+    /* 다른 라이트 테마 변수들 */
+  }
+}

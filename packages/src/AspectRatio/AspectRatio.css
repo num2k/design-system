@@ -1,0 +1,45 @@
+.aspect-ratio {
+  position: relative;
+  width: 100%;
+}
+
+.aspect-ratio__inner {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.aspect-ratio__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 컨텐츠가 부모 요소에 맞게 확장되도록 설정 */
+.aspect-ratio--content-fill
+  > .aspect-ratio__inner
+  > .aspect-ratio__content
+  > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 특정 컴포넌트에 대한 스타일 최적화 */
+.aspect-ratio--content-fill
+  > .aspect-ratio__inner
+  > .aspect-ratio__content
+  > img,
+.aspect-ratio--content-fill
+  > .aspect-ratio__inner
+  > .aspect-ratio__content
+  > video,
+.aspect-ratio--content-fill
+  > .aspect-ratio__inner
+  > .aspect-ratio__content
+  > iframe {
+  display: block;
+  object-position: center;
+}

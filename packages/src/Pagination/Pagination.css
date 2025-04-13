@@ -1,0 +1,127 @@
+.pagination {
+  --pagination-bg: var(--color-neutral-50);
+  --pagination-text: var(--color-neutral-800);
+  --pagination-border: var(--color-neutral-300);
+  --pagination-hover-bg: var(--color-neutral-100);
+  --pagination-active-bg: var(--color-primary-500);
+  --pagination-active-text: white;
+  --pagination-disabled-bg: var(--color-neutral-100);
+  --pagination-disabled-text: var(--color-neutral-400);
+}
+
+.pagination__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  gap: var(--spacing-1);
+}
+
+.pagination__item {
+  margin: 0;
+  padding: 0;
+}
+
+.pagination__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--pagination-bg);
+  color: var(--pagination-text);
+  border: 1px solid var(--pagination-border);
+  cursor: pointer;
+  transition: all var(--transition-duration-fast);
+  font-family: var(--font-family-sans);
+  min-width: 2.5em;
+  position: relative;
+}
+
+.pagination__button:hover:not(:disabled, .pagination__button--active) {
+  background-color: var(--pagination-hover-bg);
+  border-color: var(--color-primary-300);
+  z-index: 1;
+}
+
+.pagination__button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+  z-index: 2;
+}
+
+.pagination__button--active {
+  background-color: var(--pagination-active-bg);
+  color: var(--pagination-active-text);
+  border-color: var(--color-primary-500);
+  z-index: 1;
+}
+
+.pagination__button:disabled {
+  background-color: var(--pagination-disabled-bg);
+  color: var(--pagination-disabled-text);
+  cursor: not-allowed;
+}
+
+.pagination__ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-neutral-500);
+  min-width: 2.5em;
+  user-select: none;
+}
+
+.pagination__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  font-weight: var(--font-weight-bold);
+}
+
+/* 크기 변형 */
+.pagination--sm .pagination__button {
+  font-size: var(--font-size-sm);
+  height: 28px;
+}
+
+.pagination--md .pagination__button {
+  font-size: var(--font-size-md);
+  height: 36px;
+}
+
+.pagination--lg .pagination__button {
+  font-size: var(--font-size-lg);
+  height: 44px;
+}
+
+/* 모양 변형 */
+.pagination--square .pagination__button {
+  border-radius: var(--radius-none);
+}
+
+.pagination--rounded .pagination__button {
+  border-radius: var(--radius-md);
+}
+
+.pagination--pill .pagination__button {
+  border-radius: var(--radius-full);
+}
+
+/* 비활성화 페이지네이션 */
+.pagination--disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* 반응형 조정 */
+@media (max-width: 480px) {
+  .pagination__button--control {
+    /* 모바일에서는 컨트롤 버튼만 보여주기 위한 옵션 */
+  }
+
+  .pagination--sm .pagination__button {
+    min-width: 2em;
+    height: 24px;
+  }
+}

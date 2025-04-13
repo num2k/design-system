@@ -1,0 +1,134 @@
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: var(--z-index-tooltip);
+  background-color: var(--color-neutral-800);
+  color: var(--color-neutral-50);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-2) var(--spacing-3);
+  box-shadow: var(--shadow-md);
+
+  /* 수정: 한글자씩 세로로 표시되는 문제 해결 */
+  white-space: normal; /* 줄바꿈 허용 */
+  text-align: center;
+  min-width: 60px; /* 최소 너비 추가 */
+  width: max-content; /* 내용에 따라 자동으로 너비 조정 */
+  max-width: 200px; /* 기본 최대 너비 */
+  word-break: keep-all; /* 한글 단어 분리 방지 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-duration-fast)
+    var(--transition-timing-function);
+}
+
+.tooltip--visible {
+  opacity: 1;
+}
+
+/* 배치 변형 */
+.tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.tooltip--top::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--color-neutral-800) transparent transparent transparent;
+}
+
+.tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tooltip--bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent var(--color-neutral-800) transparent;
+}
+
+.tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  text-align: right; /* 왼쪽 방향일 때 오른쪽 정렬 */
+}
+
+.tooltip--left::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--color-neutral-800);
+}
+
+.tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  text-align: left; /* 오른쪽 방향일 때 왼쪽 정렬 */
+}
+
+.tooltip--right::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent var(--color-neutral-800) transparent transparent;
+}
+
+/* 최대 너비 변형 */
+.tooltip--width-sm {
+  min-width: 80px;
+  max-width: 150px;
+}
+
+.tooltip--width-md {
+  min-width: 100px;
+  max-width: 250px;
+}
+
+.tooltip--width-lg {
+  min-width: 120px;
+  max-width: 350px;
+}
+
+/* 애니메이션 효과 */
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tooltip--animated {
+  animation: tooltip-fade-in 0.2s ease-in-out forwards;
+}

@@ -1,0 +1,199 @@
+.select-container {
+  width: auto;
+}
+
+.select-container--full-width {
+  width: 100%;
+}
+
+.select {
+  display: block;
+  width: 100%;
+  font-family: var(--font-family-sans);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-duration-fast)
+    var(--transition-timing-function);
+  outline: none;
+  background-color: transparent;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right var(--spacing-2) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: var(--spacing-10);
+}
+
+/* Size variants */
+.select--sm {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-1-5) var(--spacing-2);
+}
+
+.select--md {
+  font-size: var(--font-size-md);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.select--lg {
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-2-5) var(--spacing-4);
+}
+
+/* Style variants */
+.select--default {
+  border: 1px solid var(--color-neutral-300);
+}
+
+.select--default:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 1px var(--color-primary-500);
+}
+
+.select--default:hover:not(:disabled) {
+  border-color: var(--color-primary-400);
+}
+
+.select--filled {
+  border: 0;
+  background-color: var(--color-neutral-100);
+}
+
+.select--filled:focus {
+  background-color: white;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 1px var(--color-primary-500);
+}
+
+.select--filled:hover:not(:disabled) {
+  background-color: var(--color-neutral-200);
+}
+
+.select--flushed {
+  border: none;
+  border-bottom: 1px solid var(--color-neutral-300);
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.select--flushed:focus {
+  border-bottom-color: var(--color-primary-500);
+  box-shadow: 0 1px 0 0 var(--color-primary-500);
+}
+
+.select--flushed:hover:not(:disabled) {
+  border-bottom-color: var(--color-primary-400);
+}
+
+/* State styles */
+.select--error {
+  border-color: var(--color-error-500) !important;
+}
+
+.select--error:focus {
+  box-shadow: 0 0 0 1px var(--color-error-500);
+}
+
+.select--success {
+  border-color: var(--color-success-500) !important;
+}
+
+.select--success:focus {
+  box-shadow: 0 0 0 1px var(--color-success-500);
+}
+
+.select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-neutral-100);
+}
+
+/* Helper text */
+.select__helper-text {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.select__helper-text--error {
+  color: var(--color-error-500);
+}
+
+.select__helper-text--success {
+  color: var(--color-success-500);
+}
+
+/* Dark mode */
+[data-theme="dark"] .select {
+  color: var(--color-neutral-900); /* 다크모드에서 밝은 텍스트 색상 사용 */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23D4D4D8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  /* 다크모드에서는 화살표 색상을 밝게 변경 */
+  background-color: var(--color-neutral-50);
+}
+
+[data-theme="dark"] .select--default {
+  border-color: var(--color-neutral-300);
+}
+
+[data-theme="dark"] .select--default:focus {
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 1px var(--color-primary-400);
+}
+
+[data-theme="dark"] .select--default:hover:not(:disabled) {
+  border-color: var(--color-primary-300);
+}
+
+[data-theme="dark"] .select--filled {
+  background-color: var(--color-neutral-100);
+}
+
+[data-theme="dark"] .select--filled:focus {
+  background-color: var(--color-neutral-200);
+}
+
+[data-theme="dark"] .select--filled:hover:not(:disabled) {
+  background-color: var(--color-neutral-200);
+}
+
+[data-theme="dark"] .select--flushed {
+  border-bottom-color: var(--color-neutral-300);
+}
+
+[data-theme="dark"] .select--flushed:focus {
+  border-bottom-color: var(--color-primary-400);
+  box-shadow: 0 1px 0 0 var(--color-primary-400);
+}
+
+[data-theme="dark"] .select--flushed:hover:not(:disabled) {
+  border-bottom-color: var(--color-primary-300);
+}
+
+/* 옵션 텍스트 색상도 조정 */
+[data-theme="dark"] .select option {
+  background-color: var(--color-neutral-100); /* 드롭다운 배경색 */
+  color: var(--color-neutral-900); /* 드롭다운 텍스트 색상 */
+}
+
+[data-theme="dark"] .select:disabled {
+  border-color: var(--color-neutral-200);
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+}
+
+/* 헬퍼 텍스트도 더 밝게 조정 */
+[data-theme="dark"] .select__helper-text {
+  color: var(--color-neutral-400);
+}
+
+[data-theme="dark"] .select__helper-text--error {
+  color: var(--color-error-400);
+}
+
+[data-theme="dark"] .select__helper-text--success {
+  color: var(--color-success-400);
+}
+
+/* 플레이스홀더 색상 조정 */
+[data-theme="dark"] .select::placeholder {
+  color: var(--color-neutral-500);
+}

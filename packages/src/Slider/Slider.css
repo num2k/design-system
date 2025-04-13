@@ -1,0 +1,310 @@
+/* 기본 슬라이더 컨테이너 */
+.slider,
+.range-slider {
+  position: relative;
+  width: 100%;
+  min-width: 120px;
+  height: 40px;
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* 수직 슬라이더 */
+.slider--vertical,
+.range-slider.slider--vertical {
+  height: 200px;
+  width: 40px;
+  min-width: auto;
+}
+
+/* 트랙 (배경 레일) */
+.slider__track {
+  position: absolute;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-full);
+}
+
+/* 수평 트랙 */
+.slider--horizontal .slider__track {
+  height: 4px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 수직 트랙 */
+.slider--vertical .slider__track {
+  width: 4px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 진행 트랙 (채워진 부분) */
+.slider__track-progress {
+  position: absolute;
+  border-radius: var(--radius-full);
+}
+
+/* 수평 진행 트랙 */
+.slider--horizontal .slider__track-progress {
+  height: 100%;
+  left: 0;
+}
+
+/* 수직 진행 트랙 */
+.slider--vertical .slider__track-progress {
+  width: 100%;
+  bottom: 0;
+}
+
+/* 컬러 변형 - 진행 트랙 */
+.slider--primary .slider__track-progress {
+  background-color: var(--color-primary-500);
+}
+
+.slider--success .slider__track-progress {
+  background-color: var(--color-success-500);
+}
+
+.slider--warning .slider__track-progress {
+  background-color: var(--color-warning-500);
+}
+
+.slider--error .slider__track-progress {
+  background-color: var(--color-error-500);
+}
+
+.slider--info .slider__track-progress {
+  background-color: var(--color-info-600);
+}
+
+/* 썸네일 (핸들) */
+.slider__thumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: transform 0.1s ease;
+  z-index: 2;
+}
+
+/* 크기 변형 - 썸네일 */
+.slider--sm .slider__thumb {
+  width: 12px;
+  height: 12px;
+}
+
+.slider--lg .slider__thumb {
+  width: 20px;
+  height: 20px;
+}
+
+/* 썸네일 위치 조정 */
+.slider--horizontal .slider__thumb {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider--vertical .slider__thumb {
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+/* 컬러 변형 - 썸네일 테두리 */
+.slider--primary .slider__thumb {
+  border: 2px solid var(--color-primary-500);
+}
+
+.slider--success .slider__thumb {
+  border: 2px solid var(--color-success-500);
+}
+
+.slider--warning .slider__thumb {
+  border: 2px solid var(--color-warning-500);
+}
+
+.slider--error .slider__thumb {
+  border: 2px solid var(--color-error-500);
+}
+
+.slider--info .slider__thumb {
+  border: 2px solid var(--color-info-600);
+}
+
+/* 썸네일 호버 및 활성 상태 */
+.slider__thumb:hover,
+.slider--dragging .slider__thumb {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slider--vertical .slider__thumb:hover,
+.slider--vertical.slider--dragging .slider__thumb {
+  transform: translate(-50%, 50%) scale(1.2);
+}
+
+/* 썸네일 툴팁 */
+.slider__tooltip {
+  position: absolute;
+  background-color: var(--color-neutral-800);
+  color: white;
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: tooltipFadeIn 0.2s ease forwards;
+}
+
+@keyframes tooltipFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 수평 슬라이더 툴팁 */
+.slider--horizontal .slider__tooltip {
+  bottom: 100%;
+  left: -100%;
+  transform: translateX(-50%) translateY(-10px);
+  margin-bottom: var(--spacing-2);
+}
+
+.slider--horizontal .slider__tooltip::after {
+  /* content: ""; */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--color-neutral-800) transparent transparent transparent;
+}
+
+/* 수직 슬라이더 툴팁 */
+.slider--vertical .slider__tooltip {
+  right: 100%;
+  top: -100%;
+  transform: translateY(-50%) translateX(-10px);
+  margin-right: var(--spacing-2);
+}
+
+.slider--vertical .slider__tooltip::after {
+  /* content: ""; */
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--color-neutral-800);
+}
+
+/* 마크 (눈금) */
+.slider__mark {
+  position: absolute;
+  z-index: 1;
+}
+
+/* 수평 슬라이더 마크 */
+.slider--horizontal .slider__mark {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 수직 슬라이더 마크 */
+.slider--vertical .slider__mark {
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+/* 마크 점 */
+.slider__mark-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-neutral-300);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 활성화된 마크 */
+.slider__mark--active .slider__mark-dot {
+  background-color: var(--color-neutral-50);
+  border: 1px solid var(--color-primary-500);
+}
+
+/* 마크 라벨 */
+.slider__mark-label {
+  position: absolute;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+  white-space: nowrap;
+}
+
+/* 수평 슬라이더 마크 라벨 */
+.slider--horizontal .slider__mark-label {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--spacing-2);
+}
+
+/* 수직 슬라이더 마크 라벨 */
+.slider--vertical .slider__mark-label {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--spacing-2);
+}
+
+/* 비활성화 상태 */
+.slider--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider--disabled .slider__track,
+.slider--disabled .slider__thumb {
+  cursor: not-allowed;
+}
+
+.slider--disabled .slider__thumb:hover {
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slider--vertical.slider--disabled .slider__thumb:hover {
+  transform: translate(-50%, 50%);
+}
+
+/* 다크 모드 */
+
+[data-theme="dark"] .slider__thumb {
+  background-color: var(--color-neutral-200);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .slider__mark-dot {
+  background-color: var(--color-neutral-500);
+}
+[data-theme="dark"] .slider__tooltip {
+  color: var(--color-neutral-50);
+}
+
+[data-theme="dark"] .slider__mark--active .slider__mark-dot {
+  background-color: var(--color-neutral-300);
+  border-color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .slider__mark-label {
+  color: var(--color-neutral-800);
+}

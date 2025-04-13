@@ -1,0 +1,231 @@
+/* DatePicker 컨테이너 */
+.datepicker {
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--spacing-3);
+  font-family: var(--font-family-sans);
+}
+
+/* 라벨 */
+.datepicker__label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+}
+
+/* 필수 항목 표시 */
+.datepicker__required {
+  color: var(--color-error-500);
+  margin-left: var(--spacing-1);
+}
+
+/* 입력 필드 컨테이너 */
+.datepicker__input-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+/* 입력 필드 */
+.datepicker__input {
+  flex: 1;
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  padding-right: var(--spacing-8); /* 아이콘 공간 확보 */
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-900);
+  background-color: var(--color-neutral-50);
+  transition: all var(--transition-duration-fast);
+  outline: none;
+  cursor: pointer;
+}
+
+.datepicker__input:hover {
+  border-color: var(--color-neutral-400);
+}
+
+.datepicker__input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+/* 크기 변형 */
+.datepicker__input--sm {
+  padding: var(--spacing-1) var(--spacing-2);
+  padding-right: var(--spacing-7);
+  font-size: var(--font-size-sm);
+  height: 32px;
+}
+
+.datepicker__input--md {
+  padding: var(--spacing-2) var(--spacing-3);
+  padding-right: var(--spacing-8);
+  font-size: var(--font-size-md);
+  height: 40px;
+}
+
+.datepicker__input--lg {
+  padding: var(--spacing-3) var(--spacing-4);
+  padding-right: var(--spacing-9);
+  font-size: var(--font-size-lg);
+  height: 48px;
+}
+
+/* 아이콘 버튼 */
+.datepicker__icon {
+  position: absolute;
+  right: var(--spacing-2);
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: var(--spacing-1);
+  color: var(--color-neutral-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-duration-fast);
+}
+
+.datepicker__icon:hover {
+  color: var(--color-primary-500);
+}
+
+/* 상태 스타일 */
+/* 에러 상태 */
+.datepicker--error .datepicker__input {
+  border-color: var(--color-error-500);
+}
+
+.datepicker--error .datepicker__input:focus {
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.25);
+}
+
+/* 성공 상태 */
+.datepicker--success .datepicker__input {
+  border-color: var(--color-success-500);
+}
+
+.datepicker--success .datepicker__input:focus {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+/* 비활성화 상태 */
+.datepicker--disabled .datepicker__input {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-400);
+  border-color: var(--color-neutral-200);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.datepicker--disabled .datepicker__icon {
+  color: var(--color-neutral-400);
+  cursor: not-allowed;
+}
+
+/* 읽기 전용 상태 */
+.datepicker--readonly .datepicker__input {
+  background-color: var(--color-neutral-50);
+  cursor: default;
+}
+
+/* 도움말 텍스트 */
+.datepicker__helper-text {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.datepicker__helper-text--error {
+  color: var(--color-error-500);
+}
+
+/* 드롭다운 메뉴 (공통) */
+.datepicker__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 280px;
+  background-color: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  margin-top: var(--spacing-1);
+  z-index: var(--z-index-dropdown);
+  overflow: hidden;
+  animation: datepicker-fade-in 200ms ease-in-out;
+}
+
+@keyframes datepicker-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* DateRangePicker 헤더 */
+.daterangepicker__header {
+  padding: var(--spacing-2);
+  background-color: var(--color-neutral-50);
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.daterangepicker__selection-mode {
+  text-align: center;
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-medium);
+}
+
+.daterangepicker__mode-indicator {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-600);
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-primary-50);
+  border-radius: var(--radius-full);
+}
+
+.daterangepicker__selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-1);
+  flex-wrap: wrap;
+}
+
+.daterangepicker__date-display {
+  display: flex;
+  align-items: center;
+  margin: 0 var(--spacing-1);
+}
+
+.daterangepicker__date-label {
+  color: var(--color-neutral-600);
+  margin-right: var(--spacing-1);
+}
+
+.daterangepicker__date-value {
+  font-weight: var(--font-weight-medium);
+}
+
+.daterangepicker__separator {
+  margin: 0 var(--spacing-2);
+  color: var(--color-neutral-400);
+}
+
+[data-theme="dark"] .daterangepicker__mode-indicator {
+  color: var(--color-neutral-700);
+  background-color: var(--color-neutral-200);
+}

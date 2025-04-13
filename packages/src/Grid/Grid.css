@@ -1,0 +1,120 @@
+/* Grid 기본 스타일 */
+.grid {
+  display: grid;
+  grid-template-columns: var(--grid-template-columns);
+  gap: var(--grid-gap, 0);
+  row-gap: var(--grid-row-gap, var(--grid-gap, 0));
+  column-gap: var(--grid-column-gap, var(--grid-gap, 0));
+  grid-auto-flow: var(--grid-auto-flow, row);
+  width: 100%;
+}
+
+/* GridItem 기본 스타일 */
+.grid-item {
+  min-width: 0; /* 내용 넘침 방지 */
+  grid-column: span var(--grid-item-column-span, 1);
+  grid-row: span var(--grid-item-row-span, 1);
+}
+
+/* 특정 열/행 위치 지정 */
+.grid-item[style*="--grid-item-column-start"] {
+  grid-column-start: var(--grid-item-column-start);
+}
+
+.grid-item[style*="--grid-item-column-end"] {
+  grid-column-end: var(--grid-item-column-end);
+}
+
+.grid-item[style*="--grid-item-row-start"] {
+  grid-row-start: var(--grid-item-row-start);
+}
+
+.grid-item[style*="--grid-item-row-end"] {
+  grid-row-end: var(--grid-item-row-end);
+}
+
+/* 반응형 처리 - 중간 크기 화면 (768px 이상) */
+@media (min-width: 768px) {
+  .grid[style*="--grid-template-columns-md"] {
+    grid-template-columns: var(--grid-template-columns-md);
+  }
+
+  .grid[style*="--grid-gap-md"] {
+    gap: var(--grid-gap-md);
+  }
+
+  .grid[style*="--grid-row-gap-md"] {
+    row-gap: var(--grid-row-gap-md);
+  }
+
+  .grid[style*="--grid-column-gap-md"] {
+    column-gap: var(--grid-column-gap-md);
+  }
+
+  .grid-item[style*="--grid-item-column-span-md"] {
+    grid-column: span var(--grid-item-column-span-md);
+  }
+
+  .grid-item[style*="--grid-item-row-span-md"] {
+    grid-row: span var(--grid-item-row-span-md);
+  }
+
+  .grid-item[style*="--grid-item-column-start-md"] {
+    grid-column-start: var(--grid-item-column-start-md);
+  }
+
+  .grid-item[style*="--grid-item-column-end-md"] {
+    grid-column-end: var(--grid-item-column-end-md);
+  }
+
+  .grid-item[style*="--grid-item-row-start-md"] {
+    grid-row-start: var(--grid-item-row-start-md);
+  }
+
+  .grid-item[style*="--grid-item-row-end-md"] {
+    grid-row-end: var(--grid-item-row-end-md);
+  }
+}
+
+/* 반응형 처리 - 큰 화면 (1024px 이상) */
+@media (min-width: 1024px) {
+  .grid[style*="--grid-template-columns-lg"] {
+    grid-template-columns: var(--grid-template-columns-lg);
+  }
+
+  .grid[style*="--grid-gap-lg"] {
+    gap: var(--grid-gap-lg);
+  }
+
+  .grid[style*="--grid-row-gap-lg"] {
+    row-gap: var(--grid-row-gap-lg);
+  }
+
+  .grid[style*="--grid-column-gap-lg"] {
+    column-gap: var(--grid-column-gap-lg);
+  }
+
+  .grid-item[style*="--grid-item-column-span-lg"] {
+    grid-column: span var(--grid-item-column-span-lg);
+  }
+
+  .grid-item[style*="--grid-item-row-span-lg"] {
+    grid-row: span var(--grid-item-row-span-lg);
+  }
+
+  .grid-item[style*="--grid-item-column-start-lg"] {
+    grid-column-start: var(--grid-item-column-start-lg);
+  }
+
+  .grid-item[style*="--grid-item-column-end-lg"] {
+    grid-column-end: var(--grid-item-column-end-lg);
+  }
+
+  .grid-item[style*="--grid-item-row-start-lg"] {
+    grid-row-start: var(--grid-item-row-start-lg);
+  }
+
+  .grid-item[style*="--grid-item-row-end-lg"] {
+    grid-row-end: var(--grid-item-row-end-lg);
+  }
+}

@@ -1,0 +1,246 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* 크기 변형 */
+.tag--sm {
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-0-5) var(--spacing-1-5);
+  height: 22px;
+}
+
+.tag--md {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-1) var(--spacing-2);
+  height: 28px;
+}
+
+.tag--lg {
+  font-size: var(--font-size-md);
+  padding: var(--spacing-1-5) var(--spacing-2-5);
+  height: 36px;
+}
+
+/* 모양 변형 */
+.tag--rounded {
+  border-radius: var(--radius-md);
+}
+
+.tag--pill {
+  border-radius: var(--radius-full);
+}
+
+.tag--square {
+  border-radius: var(--radius-sm);
+}
+
+/* 색상 + 변형 조합 */
+/* Default */
+.tag--default.tag--solid {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-700);
+}
+
+.tag--default.tag--outline {
+  background-color: transparent;
+  color: var(--color-neutral-700);
+  border: 1px solid var(--color-neutral-400);
+}
+
+.tag--default.tag--subtle {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-700);
+}
+
+/* Primary */
+.tag--primary.tag--solid {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+
+.tag--primary.tag--outline {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border: 1px solid var(--color-primary-500);
+}
+
+.tag--primary.tag--subtle {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+}
+
+/* Success */
+.tag--success.tag--solid {
+  background-color: var(--color-success-500);
+  color: white;
+}
+
+.tag--success.tag--outline {
+  background-color: transparent;
+  color: var(--color-success-600);
+  border: 1px solid var(--color-success-500);
+}
+
+.tag--success.tag--subtle {
+  background-color: var(--color-success-50);
+  color: var(--color-success-700);
+}
+
+/* Warning */
+.tag--warning.tag--solid {
+  background-color: var(--color-warning-500);
+  color: white;
+}
+
+.tag--warning.tag--outline {
+  background-color: transparent;
+  color: var(--color-warning-600);
+  border: 1px solid var(--color-warning-500);
+}
+
+.tag--warning.tag--subtle {
+  background-color: var(--color-warning-50);
+  color: var(--color-warning-700);
+}
+
+/* Error */
+.tag--error.tag--solid {
+  background-color: var(--color-error-500);
+  color: white;
+}
+
+.tag--error.tag--outline {
+  background-color: transparent;
+  color: var(--color-error-600);
+  border: 1px solid var(--color-error-500);
+}
+
+.tag--error.tag--subtle {
+  background-color: var(--color-error-50);
+  color: var(--color-error-700);
+}
+
+/* Info */
+.tag--info.tag--solid {
+  background-color: var(--color-info-500);
+  color: white;
+}
+
+.tag--info.tag--outline {
+  background-color: transparent;
+  color: var(--color-info-600);
+  border: 1px solid var(--color-info-500);
+}
+
+.tag--info.tag--subtle {
+  background-color: var(--color-info-50);
+  color: var(--color-info-700);
+}
+
+/* 아이콘 및 아바타 */
+.tag__icon {
+  margin-right: var(--spacing-1);
+  display: inline-flex;
+  align-items: center;
+}
+
+.tag__avatar {
+  margin-right: var(--spacing-1);
+  margin-left: -4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tag__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 닫기 버튼 */
+.tag__close {
+  margin-left: var(--spacing-1);
+  margin-right: -2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: currentColor;
+  opacity: 0.7;
+  height: 16px;
+  width: 16px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+.tag__close:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tag__close:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 클릭 가능한 태그 */
+.tag--clickable {
+  cursor: pointer;
+}
+
+.tag--clickable:hover {
+  filter: brightness(0.95);
+}
+
+.tag--clickable:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-200);
+}
+
+.tag--clickable:active {
+  transform: scale(0.98);
+}
+
+/* 비활성화 상태 */
+.tag--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 태그 그룹 */
+.tag-group {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tag-group--wrap {
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.tag-group--spacing-sm > *:not(:last-child) {
+  margin-right: var(--spacing-1);
+}
+
+.tag-group--spacing-md > *:not(:last-child) {
+  margin-right: var(--spacing-2);
+}
+
+.tag-group--spacing-lg > *:not(:last-child) {
+  margin-right: var(--spacing-3);
+}
+
+.tag-group--wrap > * {
+  margin-bottom: var(--spacing-2);
+}

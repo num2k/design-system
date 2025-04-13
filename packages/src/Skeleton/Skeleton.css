@@ -1,0 +1,95 @@
+.skeleton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-neutral-200);
+  width: 100%;
+}
+
+/* 변형 스타일 */
+.skeleton--text {
+  height: 0.6rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton--rectangular {
+  height: 100px;
+}
+
+.skeleton--circular {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.skeleton--rounded {
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+
+/* 반경 변형 */
+.skeleton--radius-none {
+  border-radius: var(--radius-none);
+}
+
+.skeleton--radius-sm {
+  border-radius: var(--radius-sm);
+}
+
+.skeleton--radius-md {
+  border-radius: var(--radius-md);
+}
+
+.skeleton--radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.skeleton--radius-full {
+  border-radius: var(--radius-full);
+}
+
+/* 애니메이션 */
+.skeleton--animate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: skeletonShimmer 1.5s infinite;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 다크 모드 지원 */
+[data-theme="dark"] .skeleton {
+  background-color: var(--color-neutral-300);
+}
+
+[data-theme="dark"] .skeleton--animate::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+}
+
+/* SkeletonText 컨테이너 */
+.skeleton-text {
+  width: 100%;
+}
